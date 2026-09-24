@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>StrongLifts 5x5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar"><div class="brand-mark" aria-label="StrongLifts 5x5"><span>SL</span><i></i></div><div class="header-actions"><button class="icon-button" id="exportButton" aria-label="Export workout data" title="Export CSV">↓<span> CSV</span></button></div></header>
+    <main>
+      <section class="view active" id="todayView" aria-labelledby="todayHeading">
+        <div class="page-heading"><div><p class="eyebrow" id="todayDate">TODAY</p><h1 id="todayHeading">Ready when you are.</h1></div><div class="workout-toggle" role="group" aria-label="Choose workout"><button class="toggle-option active" data-workout="A">A</button><button class="toggle-option" data-workout="B">B</button></div></div>
+        <div class="session-summary"><div><span class="summary-label">WORKOUT</span><strong id="workoutName">A</strong></div><div><span class="summary-label">PROGRESS</span><strong id="sessionProgress">0 / 3</strong></div><button class="text-button" id="resetSession">Reset</button></div>
+        <div class="exercise-list" id="exerciseList"></div><button class="primary-button finish-button" id="finishWorkout" disabled>Finish workout</button>
+      </section>
+      <section class="view" id="historyView" aria-labelledby="historyHeading"><div class="page-heading compact-heading"><div><p class="eyebrow">YOUR LOG</p><h1 id="historyHeading">History</h1></div></div><div class="history-list" id="historyList"></div></section>
+      <section class="view" id="progressView" aria-labelledby="progressHeading"><div class="page-heading compact-heading"><div><p class="eyebrow">THE LONG GAME</p><h1 id="progressHeading">Progress</h1></div></div><div class="pr-grid" id="prGrid"></div><div class="chart-card"><div class="section-title"><h2>Weight progression</h2><select id="chartExercise" aria-label="Choose exercise for chart"></select></div><div class="chart-wrap"><svg id="progressChart" viewBox="0 0 360 190" role="img" aria-label="Weight progression chart"></svg></div></div><div class="starting-weights"><div class="section-title"><div><p class="eyebrow">WEEK SETUP</p><h2>Starting weights</h2></div><button class="small-button" id="saveStartingWeights">Save</button></div><p class="setup-copy">These stay saved even when workout history is deleted.</p><div class="starting-weight-grid" id="startingWeightGrid"></div><div class="current-increase-heading"><p class="eyebrow">CURRENT INCREASE</p><h2>Weight added after a success</h2></div><div class="starting-weight-grid" id="incrementGrid"></div></div></section>
+    </main>
+    <nav class="bottom-nav" aria-label="Main navigation"><button class="nav-item active" data-view="todayView"><span class="nav-icon">+</span><span>Today</span></button><button class="nav-item" data-view="historyView"><span class="nav-icon">≡</span><span>History</span></button><button class="nav-item" data-view="progressView"><span class="nav-icon">↗</span><span>Progress</span></button></nav>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><h2 id="modalTitle">Edit workout</h2><button class="close-button" id="closeModal" aria-label="Close">×</button></div><div id="modalContent"></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
